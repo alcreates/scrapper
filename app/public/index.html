@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css"  media="screen,projection"/>
+
+
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	</head>
+
+	<body>
+	
+	<nav>
+		<div class="nav-wrapper teal lighten-2">
+			<a href="#!" class="brand-logo center">techNewsTracker</a>
+			
+			
+		</div>
+	</nav>
+		<div class="row">
+		
+			<div class="col s4">
+				<div class="row">
+					<div class="col s12 m12">
+						<div class="card-panel blue">
+							<span class="white-text">In this button we will be able to write a note and save it to our data base about the artical that is shown.
+							</span>
+							<div class="input-field col s12 ">
+								<textarea id="textarea1" class="materialize-textarea "></textarea>
+								<label for="textarea1">NOTES</label>
+							</div>
+							<div class="card-action">
+								<button type="button" id="submitNotes" class="btn btn-primary">enter</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s4">
+				<div class="row">
+					<div class="col s12 m12">
+						<div class="card large blue-grey darken-1">
+							<div class="card-content white-text">
+								<span class="card-title">Article</span>
+								
+							</div>
+							<div class="card-action">
+								<button type="button" class="btn btn-primary" id="showContent">next Artical</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col s4">
+				<div class="row">
+					<div class="col s12 m12">
+						<div class="card-panel teal">
+							<span class="white-text">In this box we will be able to see the notes about the artical and delete it if we would like.  
+							</span>
+							<div class="card-action">
+								<button type="button" class="btn btn-primary" id="deleteButton">delete</button>
+							</div>
+						</div>
+					</div>
+			</div>
+		
+		</div>
+		<div id="test"></div>
+		<!--Import jQuery before materialize.js-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
