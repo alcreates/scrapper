@@ -1,14 +1,60 @@
+var i = 0
+
+
+
 $("#showContent").on('click', function() {
     $.get('/articles', function(data) {
-        console.log(data[0].title);
-        for (var i = 0; i < data.length; i++) {
-        	console.log("in the for loop");
+        
 
-            $('.card-content').append('<p data-id="' + data[i]._id + '">' + data[i].title + '<br />' + data[i].content + '</p>');
-        }
+            $('.card-content').html('<p id="articleContent" data-id="' + data[i]._id + '">' + '<b>' +data[i].title + '</b>' +'<br />' + data[i].content + '</p>');
+            // we also need to populate notes if they are attached	
+
+            i += 1
+    });
+    console.log(i)
+
+});
+
+// creates note application when notes button is pressed. 
+
+$('#notesButton').on( "click",function() {
+  var thisId = $("#articleContent").attr('data-id');
+  $('#notes').empty();
+ $.ajax({
+    method: "GET",
+    url: "/articles/" + thisId,
+  })
+    .done(function( data ) {
+      console.log(data);
+      $('#notes').append('<h2>' + data.title + '</h2>');
+      $('#notes').append('<input id="titleinput" name="title" >');
+      $('#notes').append('<textarea id="bodyinput" name="body"></textarea>');
+      $('#notes').append('<button data-id="' + data._id + '" id="savenote">Save Note</button>');
+
+      if(data.note){
+        $('#titleinput').val(data.note.title);
+        $('#bodyinput').val(data.note.body);
+      }
     });
 
 
+
+  //   $.ajax({
+  //   method: "POST",
+  //   url: "/articles/" + thisId,
+  //   data: {
+      
+  //     body: $('#textarea1').val(),
+  //   }
+  // })
+  //   .done(function( data ) {
+  //     console.log(data);
+  //     $('#textarea1').empty();
+  //   });
+
+
+  
+  // $('#textarea1').val("");
 });
 
 
@@ -17,12 +63,11 @@ $("#showContent").on('click', function() {
 
 
 
+// $("#submitNotes").on('click', function() {
 
-$("#submitNotes").on('click', function() {
-
-    var notes = $("#textarea1").val()
-    alert(notes);
-});
+//     var notes = $("#textarea1").val()
+//     alert(notes);
+// });
 
 $("#deleteButton").on('click', function() {
 

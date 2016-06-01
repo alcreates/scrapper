@@ -59,7 +59,7 @@ app.get('/scrape', function(req, res){
 	res.send("Scrape Complete");
 
 });
-//takes the information from our note section and populates the note section in Articles data base. I think. 
+//gets all the articles scraped and sends then to client. 
 
 app.get('/articles', function(req, res){
 	Article.find({}, function(err, doc){
@@ -70,7 +70,7 @@ app.get('/articles', function(req, res){
 		}
 	});
 });
-
+//populates the artical documents with notes. 
 app.get('/articles/:id', function(req, res){
 	Article.findOne({'_id': req.params.id})
 	.populate('note')
@@ -82,7 +82,7 @@ app.get('/articles/:id', function(req, res){
 		}
 	});
 });
-
+// creates a new note or updates existing note. //this needs to be attached to the save button. 
 app.post('/articles/:id', function(req, res){
 	var newNote =new Note(req.body);
 	newNote.save(function(err, doc){
